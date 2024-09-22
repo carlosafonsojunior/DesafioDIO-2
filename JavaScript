@@ -1,47 +1,61 @@
 // Definição da classe Heroi
 class Heroi {
   // Construtor que recebe as propriedades do herói
-  constructor(nome, idade, tipo) {
+  constructor(nome, idade) {
     this.nome = nome;
     this.idade = idade;
-    this.tipo = tipo;
   }
 
   // Método que define o ataque baseado no tipo do herói
   atacar() {
-    let ataque;
-    
-    // Determina o tipo de ataque conforme o tipo do herói
-    switch (this.tipo.toLowerCase()) {
-      case 'mago':
-        ataque = 'magia';
-        break;
-      case 'guerreiro':
-        ataque = 'espada';
-        break;
-      case 'monge':
-        ataque = 'artes marciais';
-        break;
-      case 'ninja':
-        ataque = 'shuriken';
-        break;
-      default:
-        ataque = 'ataque desconhecido';
-    }
-    
-    // Exibe a mensagem de ataque
-    print(`O ${this.tipo} atacou usando ${ataque}.`);
+    return `O ${this.tipo} atacou usando ${this.ataque}.`;
   }
 }
 
-// Exemplo de uso da classe Heroi
-const heroi1 = new Heroi('Gandalf', 300, 'Mago');
-const heroi2 = new Heroi('Conan', 30, 'Guerreiro');
-const heroi3 = new Heroi('Shaolin', 25, 'Monge');
-const heroi4 = new Heroi('Naruto', 20, 'Ninja');
+// Classe Mago que herda de Heroi
+class Mago extends Heroi {
+  constructor(nome, idade) {
+    super(nome, idade); // Chama o construtor da classe base
+    this.tipo = 'Mago';
+    this.ataque = 'magia';
+  }
+}
 
-// Chamando o método atacar para cada herói
-heroi1.atacar(); // O mago atacou usando magia.
-heroi2.atacar(); // O guerreiro atacou usando espada.
-heroi3.atacar(); // O monge atacou usando artes marciais.
-heroi4.atacar(); // O ninja atacou usando shuriken.
+// Classe Guerreiro que herda de Heroi
+class Guerreiro extends Heroi {
+  constructor(nome, idade) {
+    super(nome, idade);
+    this.tipo = 'Guerreiro';
+    this.ataque = 'espada';
+  }
+}
+
+// Classe Monge que herda de Heroi
+class Monge extends Heroi {
+  constructor(nome, idade) {
+    super(nome, idade);
+    this.tipo = 'Monge';
+    this.ataque = 'artes marciais';
+  }
+}
+
+// Classe Ninja que herda de Heroi
+class Ninja extends Heroi {
+  constructor(nome, idade) {
+    super(nome, idade);
+    this.tipo = 'Ninja';
+    this.ataque = 'shuriken';
+  }
+}
+
+// Exemplo de uso das classes
+const heroi1 = new Mago('Gandalf', 300);
+const heroi2 = new Guerreiro('Conan', 30);
+const heroi3 = new Monge('Shaolin', 25);
+const heroi4 = new Ninja('Naruto', 20);
+
+// Chamando o método atacar para cada herói e exibindo a mensagem
+console.log(heroi1.atacar()); // O Mago atacou usando magia.
+console.log(heroi2.atacar()); // O Guerreiro atacou usando espada.
+console.log(heroi3.atacar()); // O Monge atacou usando artes marciais.
+console.log(heroi4.atacar()); // O Ninja atacou usando shuriken.
